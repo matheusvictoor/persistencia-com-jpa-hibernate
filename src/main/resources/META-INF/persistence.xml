@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+            <!--É necessário um persistence-unit para cada banco de dados que o projeto necessitar-->
+            <persistence-unit name="dbloja" transaction-type="RESOURCE_LOCAL">
+
+               <!--Caso esteja usando JPA puro sem o Hibernate voce tem que adicionar a tag com o PATH de toda tabela que vai tar no bd
+               <class>br.com.loja.modelo.Produto</class> .Se tiver usando o Hibernate, não precisa-->
+                <properties>
+                    <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+                    <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:dbloja"/>
+                    <property name="javax.persistence.jdbc.user" value="admin"/>
+                    <property name="javax.persistence.jdbc.password" value=""/>
+
+                    <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+                    <!--Hibernate, toda vez que vc gerar um SQL, for lá no bd, imprime no console para mim-->
+                    <property name="hibernate.show_sql" value="true"/>
+                    <!--Hibernate, toda vez que vc gerar um SQL, for lá no bd, imprime no console formatado-->
+                    <property name="hibernate.format_sql" value="true"/>
+                    <!--Vê as tabelas que tem no meu programa e cria automaticamente no bd ou apaga, atualiza, depende do parâmetro de value-->
+                    <property name="hibernate.hbm2ddl.auto" value="update"/>
+                </properties>
+            </persistence-unit>
+</persistence>
